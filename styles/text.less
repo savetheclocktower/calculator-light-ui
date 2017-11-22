@@ -23,11 +23,16 @@
 .highlight-error   { .highlight-mixin(@background-color-error); }
 .highlight-success { .highlight-mixin(@background-color-success); }
 
+.highlight {
+  color: @text-color-highlight;
+}
+
 .highlight-mixin(@color) {
   padding: 1px 4px;
-  color: @text-color-highlight;
+  color: #eee;
   border-radius: @component-border-radius;
   background-color: @color;
+  border: 1px solid darken(@color, 10%);
 }
 
 
@@ -35,6 +40,30 @@
 // Shown when no tabs are open.
 
 .background-message {
-  font-weight: bold;
-  color: @text-color-subtle;
+  font-weight: 600;
+  color: fade(@text-color-subtle, 40%);
+  letter-spacing: -1px;
+}
+
+.section-heading {
+  font-weight: 600 !important;
+  letter-spacing: -0.6px;
+}
+
+label {
+  font-weight: 600;
+}
+
+.setting-title {
+  font-weight: 500;
+}
+
+.setting-description {
+  font-weight: 300;
+}
+
+table.table.text {
+  th {
+    font-weight: 600;
+  }
 }

@@ -8,25 +8,51 @@
 // List Group -------------------
 .list-group {
   li {
-    padding-left: @component-padding/2;
+    padding-left: @component-padding / 2;
 
-    // We want to highlight the background of the list items because we dont know their size.
+    // We want to highlight the background of the list items because we don't
+    // know their size.
     &.selected {
       color: @text-color-selected;
       background-color: @background-color-selected;
-      &:before{ display: none; }
+      &:before { display: none; }
+    }
+  }
+}
+.list-tree.has-collapsable-children {
+  .list-nested-item > .list-tree > li {
+    &.selected > .name {
+      color: @text-color-selected;
     }
   }
 }
 
+li.directory.selected > .header {
+  color: @text-color-selected;
+}
 
 // List Tree -------------------
-.list-tree {
-  .selected {
+.list-tree,
+.list-tree.has-flat-children {
+  .list-item.selected {
     color: @text-color-selected;
   }
 }
 
+// HACK: For some reason the background is displaying above the foreground text
+// here.
+.list-tree.has-flat-children {
+  .selected {
+    position: relative !important;
+    z-index: 1;
+
+    &::before {
+      z-index: -1;
+      left: -1000px;
+      right: -1000px;
+    }
+  }
+}
 
 // Select List -------------------
 .select-list {
@@ -47,12 +73,52 @@
   padding: @popover-list-padding;
   border-radius: @component-border-radius;
   background-color: @overlay-background-color;
-  box-shadow: 0 2px 8px 1px hsla(0,0%,0%,.3);
+  .box-shadow();
 
   .list-group {
     margin-top: @popover-list-padding;
     li {
       padding-left: @popover-list-padding;
+    }
+  }
+}
+
+.select-list {
+  .list-group {
+    li.selected {
+      .icon {
+        color: @text-color-selected;
+      }
+    }
+  }
+
+  .mark-active {
+    li {
+      padding-left: @component-padding * 3;
+    }
+    .active {
+      &::before {
+        background-color: transparent;
+        font-family: 'Octicons Regular';
+        content: "\f03a";
+        display: inline-block;
+        position: absolute;
+        left: @component-padding;
+      }
+    }
+  }
+}
+
+.list-item {
+  &.selected {
+    color: @text-color-selected !important;
+  }
+}
+
+.list-group {
+  .two-lines {
+    .primary-line {
+      font-weight: 600;
     }
   }
 }

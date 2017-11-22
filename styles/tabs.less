@@ -5,20 +5,44 @@
 // Displays selectable tabs above the editor.
 // Overrides: atom/tabs
 
+// Amount by which we're altering the tab text size from the default.
+@tab-delta: -2.5px;
+
 .tab-bar {
   background-color: @tab-bar-background-color;
   border-bottom: 1px solid @base-border-color;
+  border-left: 1px solid @tab-border-color;
+  border-radius: 0;
 
   .tab {
     color: @text-color;
     height: @tab-height;
     line-height: @tab-height;
-    font-size: @font-size;
+    font-size: @font-size + @tab-delta;
     border-right: 1px solid @tab-border-color;
+    background: linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 0.05) 0%,
+      rgba(0, 0, 0, 0) 40%
+    );
     background-color: @tab-background-color;
+
+    & > .icon:before {
+      font-size: @font-size + @tab-delta;
+    }
+
     &.active {
       color: @text-color-selected;
+      background: linear-gradient(
+        to bottom,
+        rgba(0, 0, 0, 0.1) 0%,
+        rgba(0, 0, 0, 0) 40%
+      );
       background-color: @tab-background-color-active;
+
+      & > .icon:before {
+        color: @text-color-selected;
+      }
     }
 
 
@@ -36,7 +60,7 @@
 
     // Close Icon (the X) -------------------
     .close-icon:hover {
-      color: @text-color-selected;
+      color: lighten(@text-color, 20%);
     }
     &.active .close-icon:hover {
       color: @text-color;
@@ -47,11 +71,42 @@
     // Styles get applied while dragging a tab
     &.is-dragging {
       background: darken(@tab-background-color, 10%);
+      color: @text-color;
       border-color: transparent;
-      opacity: .5;
+      opacity: .8;
       & .close-icon {
         visibility: hidden;
       }
     }
   }
+}
+
+// Zentabs adds a `pinned` class name to tabs that are protected from automatic
+// closing.
+.tab.pinned {
+  // Show a bit more of the tab than we would otherwise.
+  flex: 1.2;
+  padding-left: @component-icon-size + (@component-icon-padding * 2);
+  font-weight: 600;
+
+  // Pin icon.
+  &::before {
+    background-color: transparent;
+    font-family: 'Octicons Regular';
+    content: "\f041";
+    display: inline-block;
+    position: absolute;
+    left: @component-padding;
+  }
+}
+
+.tab.pending-tab,
+.tab.active.pending-tab {
+  background-image: repeating-linear-gradient(
+    -45deg,
+    rgba(0, 0, 0, 0.05) 0px,
+    rgba(0, 0, 0, 0.05) 3px,
+    rgba(0, 0, 0, 0) 4px,
+    rgba(0, 0, 0, 0) 8px
+  );
 }

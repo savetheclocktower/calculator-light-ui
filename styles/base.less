@@ -20,3 +20,45 @@ atom-pane {
     border-right: none;
   }
 }
+
+.control-label {
+  .setting-description {
+    font-weight: normal;
+    font-size: 13px;
+  }
+}
+
+select.form-control {
+  background-color: lighten(@button-background-color, 80%);
+}
+
+.settings-view {
+  font-size: 12px;
+  select.form-control {
+    background-color: lighten(@button-background-color, 5%);
+    .box-shadow(2px);
+    margin-right: @component-padding;
+    border: 1px solid fade(@button-border-color, 30%);
+
+    &:hover,
+    &:focus {
+      .box-shadow(2px);
+    }
+  }
+}
+
+input[type='checkbox'],
+select.form-control {
+  border: 1px solid fade(@button-border-color, 30%);
+}
+
+::-webkit-input-placeholder,
+.placeholder-text {
+  color: fade(@text-color, 45%);
+}
+
+.github-StagingView:focus {
+  .github-StagingView-group.is-focused .is-selected {
+    background-color: @text-color-selected;
+  }
+}

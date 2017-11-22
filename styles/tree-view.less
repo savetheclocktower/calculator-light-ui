@@ -14,7 +14,32 @@
   color: @text-color;
   background-color: @tree-view-background-color;
 
-  .list-item.selected {
-    color: @text-color-selected;
+  // The selected item should have its icons change color along with the text.
+  // As it happens, this requires lots of rules.
+  .list-nested-item.selected > .list-item {
+    & > .name {
+      color: @text-color-selected !important;
+    }
+
+    & > .icon:before {
+      color: @text-color-selected !important;
+    }
   }
+
+  .list-item {
+    &.selected > .name {
+      color: @text-color-selected !important;
+    }
+
+    &.selected > .icon:before {
+      color: @text-color-selected !important;
+    }
+  }
+
+  .list-nested-item.selected {
+    .list-item:not(.selected) > .name {
+      color: inherit;
+    }
+  }
+
 }

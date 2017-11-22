@@ -6,20 +6,38 @@
 
 
 .btn {
+  font-weight: 400;
   color: lighten(@text-color, 6%);
-  background-color: @button-background-color;
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0) 0%,
+    rgba(100, 100, 100, 0.05) 50%
+  );
+  background-color: lighten(@button-background-color, 2%);
+  border: 1px solid @button-border-color;
+  transition-property: background-color, background;
+  transition-duration: 0.2s;
+  border-bottom-width: 2px;
+  border-right-width: 2px;
+
   &:hover,
   &:focus {
     color: @text-color-highlight;
     background-color: @button-background-color-hover;
   }
   &:active {
-    color: fade(@text-color-selected, 66%);
-    background-color: darken(@button-background-color, 2%);
+    color: @text-color-highlight;
+    transform: translate(1px, 1px);
+    background-color: @button-background-color-hover;
+    box-shadow: none;
   }
   &.selected {
-    color: @text-color-selected;
+    color: @text-color-highlight;
     background-color: @button-background-color-selected;
+
+    &:hover {
+      color: @text-color-highlight;
+    }
   }
   &:focus,
   &:focus:active {
@@ -30,24 +48,28 @@
 
 // Colored buttons -----------------------
 
-.btn.btn-primary { .btn-color(@background-color-info); }
-.btn.btn-info    { .btn-color(@background-color-info); }
-.btn.btn-success { .btn-color(@background-color-success); }
-.btn.btn-warning { .btn-color(@background-color-warning); }
-.btn.btn-error   { .btn-color(@background-color-error); }
+.btn.btn-primary { .btn-color(darken(@background-color-info, 2%)); }
+.btn.btn-info    { .btn-color(darken(@background-color-info, 2%)); }
+.btn.btn-success { .btn-color(darken(@background-color-success, 2%)); }
+.btn.btn-warning { .btn-color(darken(@background-color-warning, 2%)); }
+.btn.btn-error   { .btn-color(darken(@background-color-error, 2%)); }
 
 .btn-color(@bg) {
   color: @text-color-selected;
   background-color: @bg;
+  border-color: desaturate(darken(@bg, 15%), 20%);
+  border-bottom-width: 2px;
+  border-right-width: 2px;
   &:hover,
   &:focus {
-    background-color: lighten(@bg, 4%);
+    background-color: lighten(@bg, 11%);
+    color: @text-color-selected;
   }
   &:active {
-    background-color: darken(@bg, 4%);
+    // background-color: darken(@bg, 4%);
   }
   &.selected {
-    background-color: lighten(@bg, 4%);
+    background-color: lighten(@bg, 9%);
   }
   &.selected:focus,
   &.selected:hover {
@@ -58,6 +80,80 @@
 
 // Button Group -----------------------
 
+.btn-group {
+  border: 1px solid @button-border-color;
+  border-left-width: 1px;
+  .box-shadow(1.5px, fade(@button-border-color, 50%));
+  border-radius: @component-border-radius;
+}
+
 .btn-group > .btn {
-  border-color: hsla(0,0%,0%,.2);;
+  border-color: @button-border-color;
+  border-color: transparent;
+  border-width: 0;
+  border-radius: 0;
+
+  // We want the first and last buttons in the group to be styled differently
+  // from the rest. But sometimes an Atom package will hide a button instead of
+  // removing it, so we can't assume that the first button we _see_ is truly
+  // the first button. This is how we get around that.
+
+  // Style all visible buttons.
+  &:not([style*='none']) {
+    border-top-left-radius: @component-border-radius !important;
+    border-bottom-left-radius: @component-border-radius !important;
+    border-left-width: 0;
+    border-left-color: transparent;
+    border-right-color: transparent
+  }
+
+  // Style all visible buttons except for the first.
+  &:not([style*='none']) ~ .btn:not([style*='none']) {
+    border-top-left-radius: 0 !important;
+    border-bottom-left-radius: 0 !important;
+    // Simulate a border-left here because that's how much of a pain it is to
+    // do an actual border.
+    background-image: linear-gradient(
+      to right,
+      @button-border-color,
+      @button-border-color 1px,
+      rgba(0, 0, 0, 0) 2px;
+    );
+  }
+
+  &:active {
+    transform: translate(1px, 1px);
+  }
+
+  // The button-inside-a-button whose only purpose is to put a status color on
+  // the right side of a button. The package list does this.
+  & > .status-indicator {
+    width: 1px !important;
+    border-right-width: 5px !important;
+  }
+
+  & + .btn {
+    margin-left: 0;
+  }
+}
+
+.btn-group-sm {
+  & > .btn {
+    font-size: @font-size - 1px;
+  }
+}
+
+.config-menu .btn {
+  font-size: 12px;
+  border: 1px solid hsla(0, 0%, 0%, .2);
+  background-color: hsla(0, 0%, 0%, .05);
+}
+
+::-webkit-input-placeholder,
+.placeholder-text {
+  color: fade(@text-color, 45%) !important;
+}
+
+select.input-select {
+  background-color: @input-background-color;
 }

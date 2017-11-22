@@ -8,6 +8,20 @@
 
 // Spinner -------------------
 
+@keyframes loading-spinner-animation {
+  0% {
+    transform: translateX(50%) rotateZ(0);
+  }
+
+  50% {
+    transform: translateX(50%) rotateZ(180deg);
+  }
+
+  100% {
+    transform: translateX(50%) rotateZ(360deg);
+  }
+}
+
 .loading-spinner-large  { .loading-spinner(64px); }
 .loading-spinner-medium { .loading-spinner(48px); }
 .loading-spinner-small  { .loading-spinner(32px); }
@@ -17,10 +31,32 @@
   display: block;
   width: @size;
   height: @size;
-  background-image: url(images/octocat-spinner-128.gif);
+  background-image: none;
   background-repeat: no-repeat;
   background-size: @size @size;
+  position: relative;
   &.inline-block {
     display: inline-block;
+  }
+
+  transform: translateX(0%) rotateZ(0);
+
+  animation: loading-spinner-animation;
+  animation-duration: 1.5s;
+  animation-iteration-count: infinite;
+
+  &::before {
+    background-color: transparent;
+    font-family: 'Octicons Regular';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    font-size: @size * 0.75;
+    line-height: @size * 0.75;
+    text-align: center;
+    // Hourglass.
+    content: "\f09e";
   }
 }

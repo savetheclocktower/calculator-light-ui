@@ -4,16 +4,40 @@
 
 // Overrides: atom/static/panels.less
 
-.panel-heading {
-  border-bottom: 1px solid @panel-heading-border-color;
-  background-color: @panel-heading-background-color;
-}
-
-.inset-panel {
+atom-panel {
+  border: 1px solid @button-border-color;
   background-color: @inset-panel-background-color;
-  .panel-heading {
-    background-color: lighten(@inset-panel-background-color, 4%);
+
+  &.panel-bottom { border-bottom: 0; }
+  &.panel-top { border-top: 0; }
+
+
+  // This is an inset panel, so we should give it a shadow.
+  &.padded {
+    border-radius: @component-border-radius;
+    .box-shadow(5px);
   }
+
+  .panel-heading {
+    border-bottom: 1px solid @panel-heading-border-color;
+    background-color: @panel-heading-background-color;
+    margin-top:   -@component-padding;
+    margin-left:  -@component-padding;
+    margin-right: -@component-padding;
+    padding:        @component-padding * 2;
+    padding-top:    @component-padding * 1.2;
+    padding-bottom: @component-padding;
+    .pinstripe(
+      fade(@panel-heading-background-color, 35%),
+      fade(@inset-panel-background-color,   35%)
+    );
+    font-weight: 600;
+  }
+
+  .inset-panel {
+    background-color: @inset-panel-background-color;
+  }
+
 }
 
 
@@ -21,7 +45,52 @@
 // Used on top of the editor, like the Command Palette.
 
 atom-panel.modal {
+
+  .box-shadow(5px);
   border: 1px solid @overlay-border-color;
-  border-top: none;
-  box-shadow: 0 2px 8px 1px hsla(0,0%,0%,.3);
+  border-radius: @component-border-radius;
+
+  &.overlay {
+    border-radius: @component-border-radius + 2px;
+
+    // Panels that extend from the top and bottom need a bit of padding in
+    // those respective directions so that the box shadow isn't abruptly cut
+    // off.
+    &.from-top {
+      border-top-left-radius: 0;
+      border-top-right-radius: 0;
+      padding-top: @component-padding + 20px;
+      top: -20px;
+    }
+
+    &.from-bottom {
+      border-bottom-left-radius: 0;
+      border-bottom-right-radius: 0;
+      padding-bottom: @component-padding + 20px;
+      bottom: -20px;
+    }
+
+  }
+
+}
+
+.fuzzy-finder,
+.command-palette .list-group {
+  .character-match {
+    background-color: fade(@background-color-selected, 15%);
+  }
+
+  .selected > .icon:before {
+    color: @text-color-selected;
+  }
+
+  .selected .character-match {
+    color: @text-color-selected !important;
+    background-color: lighten(@background-color-selected, 15%);
+  }
+}
+
+.package-card {
+  .box-shadow(1px);
+  .pinstripe();
 }

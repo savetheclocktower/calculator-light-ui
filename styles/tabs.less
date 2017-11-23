@@ -31,7 +31,7 @@
       font-size: @font-size + @tab-delta;
     }
 
-    &.active {
+    &.active:not(.is-dragging) {
       color: @text-color-selected;
       background: linear-gradient(
         to bottom,
@@ -53,6 +53,11 @@
       margin-top: -3px;
       border-color: @text-color-info;
     }
+
+    &.modified.active .close-icon {
+      border-color: @text-color-selected;
+    }
+
     &.modified:hover .close-icon {
       color: currentColor;
     }
@@ -63,7 +68,7 @@
       color: lighten(@text-color, 20%);
     }
     &.active .close-icon:hover {
-      color: @text-color;
+      color: darken(@text-color-selected, 10%);
     }
 
 
@@ -73,7 +78,7 @@
       background: darken(@tab-background-color, 10%);
       color: @text-color;
       border-color: transparent;
-      opacity: .8;
+      opacity: 1;
       & .close-icon {
         visibility: hidden;
       }
@@ -100,6 +105,7 @@
   }
 }
 
+// Put a pinstripe on pending tabs.
 .tab.pending-tab,
 .tab.active.pending-tab {
   background-image: repeating-linear-gradient(

@@ -7,7 +7,7 @@
     "ui",
     "theme"
   ],
-  "repository": "https://github.com/savetheclocktower/andrew-light-ui",
+  "repository": "git@github.com:savetheclocktower/calculator-light-ui.git",
   "license": "MIT",
   "engines": {
     "atom": ">=1.0.0 <2.0.0"

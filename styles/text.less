@@ -35,6 +35,11 @@
   border: 1px solid darken(@color, 10%);
 }
 
+// Weird glitch where highlights create colored areas at the top of their text
+// editors.
+.highlights > .highlight {
+  border-width: 0;
+}
 
 // Background Message ---------------
 // Shown when no tabs are open.

@@ -62,3 +62,39 @@ select.form-control {
     background-color: @text-color-selected;
   }
 }
+
+atom-panel.tool-panel {
+  border-color: @tool-panel-border-color;
+}
+
+atom-panel.footer {
+  border-width: 0;
+}
+
+atom-text-editor[mini] {
+  .box-shadow(2px, fade(@button-border-color, 25%));
+}
+
+.project-find {
+  // Nudge the close button.
+  .close-button {
+    position: relative;
+    top: -5px;
+  }
+
+  // Vertically align the find/replace text boxes alongside their accompanying
+  // buttons.
+  .input-block {
+    align-items: center;
+  }
+
+  .header-item.options-label {
+    font-size: 12px;
+    font-weight: 200;
+
+    .options {
+      font-weight: 500;
+    }
+  }
+
+}

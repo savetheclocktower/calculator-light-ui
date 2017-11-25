@@ -7,15 +7,12 @@
 
 // Overrides: atom/static/variables/ui-variables.less
 
-// Try to edit some of the values below to see your theme change.
-// A good start is to change the color of the `@base-background-color` variable.
-
 @base-color: hsl(205, 10%, 35%);
 @base-hue: hue(@base-color);
 
 // Text Colors
 @text-color:           hsl(@base-hue, 10%, 35%);
-@text-color-subtle:    hsl(@base-hue,  0%, 35%);
+@text-color-subtle:    fade(hsl(@base-hue,  20%, 35%), 75%);
 @text-color-highlight: hsl(@base-hue, 20%, 20%);
 @text-color-selected:  hsl(@base-hue, 90%, 93%);
 
@@ -44,7 +41,7 @@
 @pane-item-background-color: hsl(@base-hue, 30%, 96%);
 @pane-item-border-color:     darken(@pane-item-background-color, 20%);
 
-@input-background-color: hsl(@base-hue, 0%, 95%);
+@input-background-color: hsl(@base-hue, 0%, 100%);
 @input-border-color:     hsl(@base-hue, 29%, 63%);
 
 // Status bar
@@ -55,7 +52,7 @@
 @inset-panel-border-color:     darken(@base-border-color, 10%);
 @inset-panel-shadow-color:     darken(@inset-panel-border-color, 40%);
 
-@panel-heading-background-color: @base-background-color;
+@panel-heading-background-color: saturate(@base-background-color, 5%);
 @panel-heading-border-color:     @base-border-color;
 
 @overlay-background-color: lighten(@base-background-color, 5%);
@@ -66,7 +63,7 @@
 @button-background-color-selected: @button-background-color-hover;
 @button-border-color:              darken(@button-background-color, 50%);
 
-@tab-bar-background-color:    lighten(@base-background-color, 4%);
+@tab-bar-background-color:    darken(@base-background-color, 4%);
 @tab-bar-border-color:        transparent;
 
 @tab-background-color:        lighten(@base-background-color, 5%);

@@ -15,7 +15,9 @@
     &.selected {
       color: @text-color-selected;
       background-color: @background-color-selected;
-      &:before { display: none; }
+      &::before {
+        background-color: transparent;
+      }
     }
   }
 }
@@ -51,6 +53,19 @@ li.directory.selected > .header {
       left: -1000px;
       right: -1000px;
     }
+  }
+}
+
+.list-item.selected {
+  .icon::before {
+    color: @text-color-selected;
+  }
+  position: relative;
+  z-index: 1;
+  &::before {
+    z-index: -1;
+    left: -1000px;
+    right: -1000px;
   }
 }
 

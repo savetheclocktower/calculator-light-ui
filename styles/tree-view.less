@@ -70,6 +70,10 @@
   }
 
   .list-item {
+    &.selected::before {
+      background-color: @background-color-selected;
+    }
+
     &.selected > .name {
       color: @text-color-selected !important;
     }

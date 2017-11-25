@@ -10,12 +10,14 @@
 // Try to edit some of the values below to see your theme change.
 // A good start is to change the color of the `@base-background-color` variable.
 
+@base-color: hsl(205, 10%, 35%);
+@base-hue: hue(@base-color);
 
 // Text Colors
-@text-color:           hsl(200, 10%, 35%);
-@text-color-subtle:    hsl(0, 0%, 35%);
-@text-color-highlight: hsl(200, 20%, 20%);
-@text-color-selected:  hsl(204, 90%, 93%);
+@text-color:           hsl(@base-hue, 10%, 35%);
+@text-color-subtle:    hsl(@base-hue,  0%, 35%);
+@text-color-highlight: hsl(@base-hue, 20%, 20%);
+@text-color-selected:  hsl(@base-hue, 90%, 93%);
 
 @text-color-info:    hsl(218, 82%, 24%);
 @text-color-success: hsl(140, 44%, 32%);
@@ -29,29 +31,29 @@
 @background-color-error:   hsl(0, 71%, 35%);
 
 // Base colors
-@base-background-color: hsl(204, 20%, 91%);
+@base-background-color: hsl(@base-hue, 20%, 91%);
 @base-border-color:     darken(@base-background-color, 20%);
 
-@background-color-highlight: hsl(204, 61%, 77%);
-@background-color-selected:  fade(hsl(205, 85%, 40%), 85%);
-@app-background-color:       @base-background-color;
+@background-color-highlight: hsl(@base-hue, 61%, 77%);
+@background-color-selected:  fade( hsl(@base-hue, 85%, 40%), 85% );
 
+@app-background-color: @base-background-color;
 
 // Component colors
 // (settings pane background)
-@pane-item-background-color: hsl(204, 30%, 96%);
+@pane-item-background-color: hsl(@base-hue, 30%, 96%);
 @pane-item-border-color:     darken(@pane-item-background-color, 20%);
 
-@input-background-color: hsl(0, 0%, 95%);
-@input-border-color: hsl(204, 9%, 63%);
+@input-background-color: hsl(@base-hue, 0%, 95%);
+@input-border-color:     hsl(@base-hue, 29%, 63%);
 
 // Status bar
-@tool-panel-background-color: hsl(204, 26%, 92%);
+@tool-panel-background-color: hsl(@base-hue, 26%, 92%);
 @tool-panel-border-color:     darken(@tool-panel-background-color, 20%);
 
 @inset-panel-background-color: lighten(@base-background-color, 8%);
 @inset-panel-border-color:     darken(@base-border-color, 10%);
-@inset-panel-shadow-color: darken(@inset-panel-border-color, 40%);
+@inset-panel-shadow-color:     darken(@inset-panel-border-color, 40%);
 
 @panel-heading-background-color: @base-background-color;
 @panel-heading-border-color:     @base-border-color;
@@ -59,19 +61,20 @@
 @overlay-background-color: lighten(@base-background-color, 5%);
 @overlay-border-color:     @base-border-color;
 
-@button-background-color: hsl(210, 58%, 94%);
+@button-background-color:          hsl(@base-hue, 58%, 94%);
 @button-background-color-hover:    lighten(@button-background-color, 12%);
 @button-background-color-selected: @button-background-color-hover;
-@button-border-color: darken(@button-background-color, 50%);
+@button-border-color:              darken(@button-background-color, 50%);
 
 @tab-bar-background-color:    lighten(@base-background-color, 4%);
-@tab-bar-border-color: transparent;
+@tab-bar-border-color:        transparent;
+
 @tab-background-color:        lighten(@base-background-color, 5%);
 @tab-background-color-active: @background-color-selected;
-@tab-border-color: @base-border-color;
+@tab-border-color:            @base-border-color;
 
-@tree-view-background-color: hsl(212, 19%, 91%);
-@tree-view-border-color:     @base-border-color;
+@tree-view-background-color: hsl(@base-hue, 69%, 91%);
+@tree-view-border-color:     saturate(@base-border-color, 30%);
 
 // Site colors
 @ui-site-color-1: hsl(208, 100%, 50%); // blue

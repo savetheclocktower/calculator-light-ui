@@ -11,7 +11,6 @@
 .tab-bar {
   background-color: @tab-bar-background-color;
   border-bottom: 1px solid @base-border-color;
-  border-left: 1px solid @tab-border-color;
   border-radius: 0;
 
   .tab {
@@ -26,6 +25,10 @@
       rgba(0, 0, 0, 0) 40%
     );
     background-color: @tab-background-color;
+
+    &:last-of-type {
+      border-right-width: 0;
+    }
 
     & > .icon:before {
       font-size: @font-size + @tab-delta;

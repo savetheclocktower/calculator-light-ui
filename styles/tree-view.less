@@ -10,6 +10,49 @@
   border-right: 1px solid @base-border-color;
 }
 
+.list-item > .name,
+.list-item > .icon::before {
+  color: @text-color;
+}
+
+.status-modified > .name,
+.status-modified > .icon::before {
+  color: @text-color-warning;
+}
+
+.status-added > .name,
+.status-added > .icon::before {
+  color: @text-color-success;
+}
+
+.status-removed > .name,
+.status-removed > .icon::before {
+  color: @text-color-error;
+}
+
+// Added and removed directories should get the standard treatment. Changed
+// directories should look normal; only the files inside them that have changed
+// should get the colored text.
+.list-nested-item.status-modified {
+  color: @text-color;
+}
+
+.tree-view-root {
+  .pinstripe();
+}
+
+.atom-dock-resize-handle.left,
+.atom-dock-resize-handle.right {
+  width: 4px;
+  background-image: linear-gradient(
+    to right,
+    fade(darken(@tree-view-border-color, 40%), 50%) 0%,
+    fade(darken(@tree-view-border-color, 40%), 50%) 49%,
+    rgba(0, 0, 0, 0) 50%
+  );
+  // background-color: @tree-view-border-color;
+}
+
 .tree-view {
   color: @text-color;
   background-color: @tree-view-background-color;
@@ -36,9 +79,13 @@
     }
   }
 
+  .list-nested-item .list-item:not(.status-modified) {
+    // color: @text-color;
+  }
+
   .list-nested-item.selected {
     .list-item:not(.selected) > .name {
-      color: inherit;
+      // color: inherit;
     }
   }
 

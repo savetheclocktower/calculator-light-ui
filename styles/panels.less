@@ -93,3 +93,10 @@ atom-panel.modal {
   .box-shadow(1px);
   .pinstripe();
 }
+
+.list-group {
+  border: 1px solid @base-border-color;
+  border-radius: @component-border-radius;
+  background-color: lighten(@inset-panel-background-color, 10%);
+  .box-shadow(1px, fade(@button-border-color, 25%));
+}

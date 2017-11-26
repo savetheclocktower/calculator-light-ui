@@ -8,12 +8,29 @@
 .tooltip {
   opacity: 0.9 !important;
   font-weight: 200;
+
+  &.left .tooltip-arrow {
+    border-left-color: hsl(@base-hue, 80%, 40%) !important;
+  }
+
+  &.right .tooltip-arrow {
+    border-right-color: hsl(@base-hue, 80%, 40%) !important;
+  }
+
+  &.top .tooltip-arrow {
+    border-top-color: hsl(@base-hue, 80%, 40%) !important;
+  }
+
+  &.bottom .tooltip-arrow {
+    border-bottom-color: hsl(@base-hue, 80%, 40%) !important;
+  }
+
   .tooltip-inner {
+    background-color: hsl(@base-hue, 80%, 40%);
     line-height: 1;
     padding: .75em;
     white-space: nowrap;
     max-width: none;
-
   }
 
   .keystroke {

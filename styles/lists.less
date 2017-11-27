@@ -16,11 +16,20 @@
       color: @text-color-selected;
       background-color: @background-color-selected;
       &::before {
-        background-color: transparent;
+        display: none;
       }
     }
   }
 }
+
+// List Tree -------------------
+.list-tree,
+.list-tree.has-flat-children {
+  .list-item.selected {
+    color: @text-color-selected;
+  }
+}
+
 .list-tree.has-collapsable-children {
   .list-nested-item > .list-tree > li {
     &.selected > .name {
@@ -31,14 +40,6 @@
 
 li.directory.selected > .header {
   color: @text-color-selected;
-}
-
-// List Tree -------------------
-.list-tree,
-.list-tree.has-flat-children {
-  .list-item.selected {
-    color: @text-color-selected;
-  }
 }
 
 // HACK: For some reason the background is displaying above the foreground text
@@ -98,7 +99,7 @@ li.directory.selected > .header {
   }
 }
 
-.select-list {
+.select-list:not(.popover-list) {
   .list-group {
     li.selected {
       .icon {

@@ -9,8 +9,15 @@
       rgba(0, 0, 0, 0.02)
     );
 
-    .nav > li.active > a {
-      background-color: @background-color-selected;
+    .nav > li {
+      & > a:hover {
+        background-color:
+          hsl(@base-hue, 80%, 80%);
+      }
+
+      &.active > a {
+        background-color: @background-color-selected;
+      }
     }
 
     .btn {

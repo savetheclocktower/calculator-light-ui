@@ -3,9 +3,9 @@
   box-shadow: @distance @distance 0px 0px @color;
 }
 
-.pinstripe(@color1: fade(@base-border-color, 8%), @color2: fade(@base-border-color, 0%)) {
+.pinstripe(@color1: fade(@base-border-color, 8%), @color2: fade(@base-border-color, 0%), @angle: -45deg) {
   background-image: repeating-linear-gradient(
-    -45deg,
+    @angle,
     @color1 0px,
     @color1 3px,
     @color2 4px,

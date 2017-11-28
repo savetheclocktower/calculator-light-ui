@@ -3,14 +3,21 @@
   background-color: saturate(@pane-item-background-color, 50%) !important;
 
   .config-menu {
-    background-color: saturate(darken(@pane-item-background-color, 10%), 30%) !important;
+    background-color: saturate(darken(@pane-item-background-color, 10%), 10%) !important;
     .pinstripe(
       rgba(0, 0, 0, 0),
-      rgba(0, 0, 0, 0.05)
+      rgba(0, 0, 0, 0.02)
     );
 
-    .nav > li.active > a {
-      background-color: @background-color-selected;
+    .nav > li {
+      & > a:hover {
+        background-color:
+          hsl(@base-hue, 80%, 80%);
+      }
+
+      &.active > a {
+        background-color: @background-color-selected;
+      }
     }
 
     .btn {

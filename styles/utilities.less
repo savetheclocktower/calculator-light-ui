@@ -12,3 +12,25 @@
     @color2 8px
   );
 }
+
+// HACK: In a couple cases the background color of a list item in the tree is
+// appearing above the text instead of behind it. This is because of annoying
+// z-index-related reasons.
+.background-hack() {
+  position: relative !important;
+  z-index: 1;
+
+  // Amazingly, the background can overflow as much as it wants _on the left
+  // side_ without triggering a horizontal scrollbar. But _on the right side_
+  // too much overflow will result in a scrollbar.
+  //
+  // Luckily, we can overflow by a fixed amount on the right side because we
+  // know the padding-right value of our grandparent. We don't know the
+  // distance between our left side and the left side of the grandparent, but
+  // we can put in a very large number instead.
+  &::before {
+    z-index: -1;
+    left: -1000px;
+    right: -@component-padding;
+  }
+}

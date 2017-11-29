@@ -42,18 +42,9 @@ li.directory.selected > .header {
   color: @text-color-selected;
 }
 
-// HACK: For some reason the background is displaying above the foreground text
-// here.
 .list-tree.has-flat-children {
   .selected {
-    position: relative !important;
-    z-index: 1;
-
-    &::before {
-      z-index: -1;
-      left: -1000px;
-      right: -1000px;
-    }
+    .background-hack();
   }
 }
 
@@ -61,13 +52,8 @@ li.directory.selected > .header {
   .icon::before {
     color: @text-color-selected;
   }
-  position: relative;
-  z-index: 1;
-  &::before {
-    z-index: -1;
-    left: -1000px;
-    right: -1000px;
-  }
+
+  .background-hack();
 }
 
 // Select List -------------------

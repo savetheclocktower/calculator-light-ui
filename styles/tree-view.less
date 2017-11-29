@@ -56,10 +56,6 @@
 .tree-view {
   color: @text-color;
   background-color: @tree-view-background-color;
-  // TODO: Revisit this. It's needed because of how I apply the `selected`
-  // background color, but it's not a great idea when there are long file names
-  // in the tree view.
-  overflow-x: hidden;
 
   // The selected item should have its icons change color along with the text.
   // As it happens, this requires lots of rules.

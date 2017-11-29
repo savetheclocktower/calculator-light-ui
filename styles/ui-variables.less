@@ -58,10 +58,14 @@
 @overlay-background-color: lighten(@base-background-color, 5%);
 @overlay-border-color:     @base-border-color;
 
-@button-background-color:          hsl(@base-hue, 58%, 94%);
+@button-background-color:          hsl(@base-hue, 88%, 99%);
 @button-background-color-hover:    lighten(@button-background-color, 12%);
 @button-background-color-selected: @button-background-color-hover;
-@button-border-color:              darken(@button-background-color, 50%);
+@button-border-color:              darken(@button-background-color, 70%);
+@button-border-color-hover:
+  lighten(@button-border-color, 10%);
+
+@button-text-color: saturate(darken(@text-color, 6%), 8%);
 
 @tab-bar-background-color:    darken(@base-background-color, 5%);
 @tab-bar-border-color:        transparent;

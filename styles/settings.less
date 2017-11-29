@@ -2,6 +2,11 @@
 .settings-view.pane-item {
   background-color: saturate(@pane-item-background-color, 50%) !important;
 
+  .table td.selector {
+    white-space: normal;
+    overflow-wrap: break-word;
+  }
+
   .config-menu {
     background-color: saturate(darken(@pane-item-background-color, 10%), 10%) !important;
     .pinstripe(

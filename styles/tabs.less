@@ -12,7 +12,10 @@
   background-color: @tab-bar-background-color;
   border-bottom: 1px solid @base-border-color;
   border-radius: 0;
-  .pinstripe();
+  .pinstripe(
+    hsla(@base-hue, 10%, 50%, 0.2),
+    hsla(0, 0, 0, 0)
+  );
 
   .tab {
     color: @text-color;
@@ -112,11 +115,15 @@
 // Put a pinstripe on pending tabs.
 .tab.pending-tab:not(.is-dragging),
 .tab.active.pending-tab:not(.is-dragging) {
-  background-image: repeating-linear-gradient(
-    -45deg,
-    rgba(0, 0, 0, 0.05) 0px,
-    rgba(0, 0, 0, 0.05) 3px,
-    rgba(0, 0, 0, 0) 4px,
-    rgba(0, 0, 0, 0) 8px
+  .pinstripe(
+    rgba(0, 0, 0, 0.1),
+    rgba(0, 0, 0, 0)
   );
+  // background-image: repeating-linear-gradient(
+  //   -45deg,
+  //   rgba(0, 0, 0, 0.05) 0px,
+  //   rgba(0, 0, 0, 0.05) 3px,
+  //   rgba(0, 0, 0, 0) 4px,
+  //   rgba(0, 0, 0, 0) 8px
+  // );
 }

@@ -1,3 +1,21 @@
+.control-label {
+  .setting-description {
+    font-weight: 300;
+    font-size: 13px;
+  }
+}
+
+.checkbox input[type='checkbox'] {
+  top: 3px;
+  background-color: @background-color-selected;
+  &:not(:checked) {
+    background-color: @input-background-color;
+  }
+}
+
+.setting-description code {
+  white-space: nowrap;
+}
 
 .settings-view.pane-item {
   background-color: saturate(@pane-item-background-color, 50%) !important;
@@ -8,7 +26,7 @@
   }
 
   .config-menu {
-    background-color: saturate(darken(@pane-item-background-color, 10%), 10%) !important;
+    background-color: desaturate(lighten(@pane-item-background-color, 5%), 5%) !important;
     .pinstripe(
       rgba(0, 0, 0, 0),
       rgba(0, 0, 0, 0.02)
@@ -20,7 +38,17 @@
           hsl(@base-hue, 80%, 80%);
       }
 
+      & > a {
+        font-weight: 300;
+
+        // Icons need a nudge.
+        &::before {
+          top: 2px;
+        }
+      }
+
       &.active > a {
+        font-weight: 500;
         background-color: @background-color-selected;
       }
     }

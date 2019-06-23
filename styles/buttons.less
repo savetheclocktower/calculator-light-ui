@@ -7,31 +7,31 @@
 
 .btn {
   .box-shadow(2px, @button-border-color);
-  font-weight: 500;
+  height: @button-height;
   color: @button-text-color;
   background-color: @button-background-color;
   border: 1px solid @button-border-color;
   transition-property: background-color, border-color, color, box-shadow;
   transition-duration: 0.15s;
 
-  &:hover,
-  &:focus {
+  &:hover:not(.disabled),
+  &:focus:not(.disabled) {
     color: @text-color-highlight;
     background-color: @button-background-color-hover;
     border-color: @button-border-color-hover;
     .box-shadow(2px, @button-border-color-hover);
   }
 
-  &:active {
+  &:active:not(.disabled) {
     .box-shadow(1px);
     color: @button-text-color;
     transform: translate(1px, 1px);
     background-color: @button-background-color-hover;
   }
 
-  &.selected {
+  &.selected:not(.disabled) {
     color: @text-color-highlight;
-    background-color: darken(@text-color-selected, 5%);
+    background-color: @button-background-color-selected;
     border-color: @button-border-color-hover;
     .box-shadow(2px, @button-border-color-hover);
 
@@ -47,6 +47,7 @@
 
   &.disabled {
     color: fade(@text-color, 70%);
+    .box-shadow(2px, fade(@button-border-color, 50%));
     .pinstripe(
       rgba(0, 0, 0, 0.06),
       rgba(0, 0, 0, 0)
@@ -131,6 +132,7 @@
   &:focus {
     .box-shadow(2px, @button-border-color-hover);
   }
+
 }
 
 .btn-group > .btn {
@@ -147,16 +149,16 @@
 
   // Style all visible buttons.
   &:not([style*='none']) {
-    border-top-left-radius: @component-border-radius !important;
+    border-top-left-radius:    @component-border-radius !important;
     border-bottom-left-radius: @component-border-radius !important;
     border-left-width: 0;
-    border-left-color: transparent;
-    border-right-color: transparent
+    border-left-color:  transparent;
+    border-right-color: transparent;
   }
 
   // Style all visible buttons except for the first.
   &:not([style*='none']) ~ .btn:not([style*='none']) {
-    border-top-left-radius: 0 !important;
+    border-top-left-radius:    0 !important;
     border-bottom-left-radius: 0 !important;
     // Simulate a border-left here because that's how much of a pain it is to
     // do an actual border.
@@ -168,7 +170,7 @@
     );
   }
 
-  &:active {
+  &:active:not(.disabled) {
     transform: translate(1px, 1px);
   }
 
@@ -183,15 +185,13 @@
     margin-left: 0;
   }
 
+  &.disabled {
+    .box-shadow(2px, fade(@button-border-color, 10%));
+  }
+
   &.selected {
     .box-shadow(0);
     border-right-width: 0;
-    // background-image: linear-gradient(
-    //   to right,
-    //   @button-border-color-hover,
-    //   @button-border-color-hover 1px,
-    //   rgba(0, 0, 0, 0) 2px;
-    // );
   }
 }
 

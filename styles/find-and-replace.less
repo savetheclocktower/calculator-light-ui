@@ -17,6 +17,26 @@
     font-weight: 300;
   }
 
+  .btn-group-find,
+  .btn-group-find-all,
+  .btn-group-replace,
+  .btn-group-replace-all {
+    // Give these all equal flex-bases so that the "Find All" and "Replace All"
+    // buttons aren't twice as big as the others.
+    flex: 1 1;
+
+    // With .btn-group containers we apply the borders and box-shadows to the
+    // group and remove them from the individual buttons. These button groups
+    // aren't actually groups; they're useless containers around single
+    // buttons. So in those contexts we want to undo the button-like styles we
+    // typically apply to button groups and explicitly re-apply ordinary button
+    // styles to the buttons themselves.
+    .box-shadow(0);
+    border-width: 0;
+
+    & > .btn { .btn(); }
+  }
+
   .options {
     font-weight: 600;
   }

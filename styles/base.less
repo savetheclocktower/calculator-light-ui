@@ -26,28 +26,24 @@ atom-pane {
   }
 }
 
-select.form-control {
-  background-color: lighten(@button-background-color, 80%);
-}
-
 .settings-view {
   font-size: 12px;
   select.form-control {
     background-color: lighten(@button-background-color, 5%);
-    .box-shadow(2px);
+    .box-shadow(2px, @button-border-color);
     margin-right: @component-padding;
-    border: 1px solid fade(@button-border-color, 30%);
+    border: 1px solid @button-border-color;
 
     &:hover,
     &:focus {
-      .box-shadow(2px);
+      .box-shadow(2px, @button-border-color-hover);
     }
   }
 }
 
 input[type='checkbox'],
 select.form-control {
-  border: 1px solid fade(@button-border-color, 30%);
+  border: 1px solid @button-border-color;
 }
 
 ::-webkit-input-placeholder,
@@ -70,7 +66,9 @@ atom-panel.footer {
 }
 
 atom-text-editor[mini] {
-  .box-shadow(1px, fade(@button-border-color, 25%));
+  height: @button-height;
+  .box-shadow(2px, fade(@input-border-color, 40%));
+  // .box-shadow(1px, fade(@button-border-color, 25%));
 }
 
 .project-find {

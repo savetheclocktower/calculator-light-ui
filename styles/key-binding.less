@@ -18,3 +18,9 @@
   border: 1px solid @base-border-color;
   background-color: lighten(@app-background-color, 16%);
 }
+
+.list-group li.selected .key-binding {
+  // The key binding text is inside a container whose background remains light
+  // even when the item is selected.
+  color: @text-color;
+}

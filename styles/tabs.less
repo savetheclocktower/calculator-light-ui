@@ -112,18 +112,11 @@
   }
 }
 
-// Put a pinstripe on pending tabs.
-.tab.pending-tab:not(.is-dragging),
-.tab.active.pending-tab:not(.is-dragging) {
+// Put a pinstripe on inactive pending tabs to distinguish them better from
+// inactive non-pending tabs.
+.tab.pending-tab:not(.is-dragging) {
   .pinstripe(
     rgba(0, 0, 0, 0.1),
     rgba(0, 0, 0, 0)
   );
-  // background-image: repeating-linear-gradient(
-  //   -45deg,
-  //   rgba(0, 0, 0, 0.05) 0px,
-  //   rgba(0, 0, 0, 0.05) 3px,
-  //   rgba(0, 0, 0, 0) 4px,
-  //   rgba(0, 0, 0, 0) 8px
-  // );
 }

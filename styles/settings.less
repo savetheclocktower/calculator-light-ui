@@ -17,6 +17,14 @@
   white-space: nowrap;
 }
 
+.settings-view .package-card.deprecated .deprecation-badge {
+  display: inline-block;
+  margin-left: 6px;
+  font-size: 0.6em;
+  font-style: italic;
+  text-transform: uppercase;
+}
+
 .settings-view.pane-item {
   background-color: saturate(@pane-item-background-color, 50%) !important;
 
@@ -64,5 +72,29 @@
 
   .keybinding-panel .is-user {
     background-color: @background-color-selected;
+  }
+}
+
+// On the theme picker page, and perhaps elsewhere, a button sometimes appears
+// alongside a dropdown menu. Ensure the two controls have the same height.
+.settings-view .select-container {
+  display: flex;
+  align-items: stretch;
+
+  .btn {
+    height: auto;
+  }
+}
+
+.settings-view .sub-section {
+  & > .sub-section-heading {
+    background-color: transparent;
+    letter-spacing: -0.5px;
+    font-weight: 500;
+
+    &.icon::before {
+      top: 2px;
+      margin-right: 3px;
+    }
   }
 }

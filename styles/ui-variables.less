@@ -42,7 +42,7 @@
 @pane-item-border-color:     darken(@pane-item-background-color, 20%);
 
 @input-background-color: hsl(@base-hue, 0%, 100%);
-@input-border-color:     hsl(@base-hue, 29%, 63%);
+@input-border-color:     hsl(@base-hue, 29%, 43%);
 
 // Status bar
 @tool-panel-background-color: hsl(@base-hue, 26%, 92%);
@@ -58,12 +58,12 @@
 @overlay-background-color: lighten(@base-background-color, 5%);
 @overlay-border-color:     @base-border-color;
 
-@button-background-color:          hsl(@base-hue, 88%, 99%);
-@button-background-color-hover:    lighten(@button-background-color, 12%);
-@button-background-color-selected: @button-background-color-hover;
+@button-background-color:          hsl(@base-hue, 88%, 98%);
+@button-background-color-hover:    lighten(@button-background-color, 6%);
+@button-background-color-selected: darken(@text-color-selected, 8%);
 @button-border-color:              darken(@button-background-color, 70%);
 @button-border-color-hover:
-  lighten(@button-border-color, 10%);
+  lighten(@button-border-color, 6%);
 
 @button-text-color: saturate(darken(@text-color, 6%), 8%);
 
@@ -105,3 +105,5 @@
 @component-box-shadow: 2px 2px 0px 0px @button-border-color;
 
 @box-shadow-color: fade(@button-border-color, 40%);
+
+@button-height: 27px;

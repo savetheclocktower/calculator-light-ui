@@ -46,9 +46,11 @@ select.form-control {
   border: 1px solid @button-border-color;
 }
 
-::-webkit-input-placeholder,
-.placeholder-text {
-  color: fade(@text-color, 45%);
+*:not(atom-editor[mini]) {
+  ::-webkit-input-placeholder,
+  .placeholder-text {
+    color: fade(@text-color, 45%);
+  }
 }
 
 .github-StagingView:focus {
@@ -68,7 +70,6 @@ atom-panel.footer {
 atom-text-editor[mini] {
   height: @button-height;
   .box-shadow(2px, fade(@input-border-color, 40%));
-  // .box-shadow(1px, fade(@button-border-color, 25%));
 }
 
 .project-find {

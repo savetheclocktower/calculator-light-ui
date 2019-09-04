@@ -109,13 +109,16 @@
     .box-shadow(1px, @bsh);
   }
 
-  &.selected {
-    background-color: lighten(@bg, 9%);
+  &.selected,
+  &.selected:not(.disabled) {
+    background-color: lighten(@bg, 6%);
+    color: darken(@text-color-selected, 3%);
   }
 
   &.selected:focus,
   &.selected:hover {
-    background-color: lighten(@bg, 8%);
+    background-color: lighten(@bg, 9%);
+    color: @text-color-selected;
   }
 }
 
@@ -195,10 +198,26 @@
   }
 }
 
-.btn-group-sm {
-  & > .btn {
-    font-size: @font-size - 1px;
-  }
+.btn-xs,
+.btn-group-xs > .btn {
+  font-size: @font-size - 2px;
+  padding: 3px 5px;
+  height: auto;
+  line-height: 100%;
+}
+
+.btn-sm,
+.btn-group-sm > .btn {
+  font-size: @font-size - 1px;
+  padding: 3px 7px;
+  height: auto;
+}
+
+.btn-lg,
+.btn-group-lg > .btn {
+  font-size: @font-size + 4px;
+  height: auto;
+  padding: 3px 8px;
 }
 
 .config-menu .btn {
@@ -207,9 +226,11 @@
   background-color: hsla(0, 0%, 0%, .05);
 }
 
-::-webkit-input-placeholder,
-.placeholder-text {
-  color: fade(@text-color, 45%) !important;
+*:not(atom-editor[mini]) {
+  ::-webkit-input-placeholder,
+  .placeholder-text {
+    color: fade(@text-color, 45%) !important;
+  }
 }
 
 select.input-select {

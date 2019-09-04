@@ -20,6 +20,13 @@
       "description": "The color to use for the theme. (Only the hue component will be used.)",
       "default": "#505B62",
       "type": "color"
+    },
+    "manageMiniEditors": {
+      "order": 2,
+      "title": "Manage mini editors",
+      "description": "Whether this theme should apply its preferred UI styles to mini-editors (like the find dialog). Typically these editors are styled by the syntax theme. Enable this option if you want mini-editors to have light backgrounds without any syntax highlighting.",
+      "default": false,
+      "type": "boolean"
     }
   }
 }

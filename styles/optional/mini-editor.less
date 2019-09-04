@@ -1,0 +1,35 @@
+// By default, syntax themes — not UI themes — determine the styling of the
+// contents of mini-editors. (Most text boxes in the UI are mini-editors.) This
+// is fine in most circumstances, but can look quite strange if you've got a
+// dark syntax theme and a light UI theme, or vice-versa.
+//
+// So if the user opts into it via the “Manage mini editors” option, we apply
+// our own styles here as overrides. This gives the UI a more consistent
+// theming, but at the cost of editor niceties like syntax highlighting in these text boxes.
+
+atom-text-editor[mini] {
+  color: @text-color;
+  background-color: @input-background-color;
+
+  .cursor {
+    color: @text-color;
+  }
+
+  &[data-grammar] {
+    // Force all syntax-related tokens to be the plain text color.
+    // Theoretically, this style can be overrridden in the syntax theme if it
+    // defines `!important` on its color rules and has a more specific selector
+    // than this. Usually this won't happen.
+    & *[class^='syntax--'] {
+      color: @text-color !important;
+    }
+  }
+
+  .placeholder-text {
+    color: lighten(@text-color-subtle, 15%);
+  }
+
+  .selection .region {
+    background-color: fade(@background-color-selected, 40%);
+  }
+}

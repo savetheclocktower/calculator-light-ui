@@ -40,4 +40,24 @@
   .options {
     font-weight: 600;
   }
+
+  // This is the element that indicates how many results there were, if any. We
+  // may or may not be styling mini-editors, so we don't know what background
+  // color we'll be atop. So let's style this to look more like a badge.
+  .find-meta-container {
+    .result-counter {
+      // The element we're styling to look like a badge is always present,
+      // whether it's got text inside of it or not. Luckily, when it's empty,
+      // it's targetable via the `:empty` pseudoclass.
+      &:empty { opacity: 0; }
+      opacity: 1;
+      border: 1px solid @base-border-color;
+      background-color: @app-background-color;
+      border-radius: @component-border-radius;
+      padding: 2px 5px;
+
+      color: @text-color;
+      &.text-subtle { color: @text-color; }
+    }
+  }
 }

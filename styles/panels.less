@@ -4,6 +4,12 @@
 
 // Overrides: atom/static/panels.less
 
+@padded-amount: 10px;
+
+.padded {
+  padding: @padded-amount;
+}
+
 atom-panel {
   border: 1px solid @button-border-color;
   background-color: @inset-panel-background-color;
@@ -36,6 +42,10 @@ atom-panel {
 
   .inset-panel {
     background-color: @inset-panel-background-color;
+
+    .panel-body.padded {
+      padding-top: @padded-amount * 2;
+    }
   }
 
 }

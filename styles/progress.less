@@ -60,3 +60,44 @@
     content: "\f09e";
   }
 }
+
+@keyframes progress-animation {
+  0% {
+    background-position: 0px 0px;
+  }
+
+  100% {
+    background-position: 100% 0px;
+  }
+}
+
+progress {
+  -webkit-appearance: none;
+  border-radius: @component-border-radius;
+  .pinstripe(
+    rgba(0, 0, 0, 0.16),
+    rgba(0, 0, 0, 0)
+  );
+  background-size: 1000% auto;
+  background-repeat: repeat-x repeat-y;
+  animation: 30s linear infinite progress-animation;
+
+  &::-webkit-progress-inner-element {
+    border-radius: @component-border-radius;
+    background-color: fade(@text-color, 70%);
+  }
+
+  &::-webkit-progress-bar {
+    background: transparent;
+  }
+
+  &::-webkit-progress-value {
+    border-radius: @component-border-radius;
+    background-color: fade(@background-color-info, 50%);
+    filter: saturate(150%)
+  }
+}
+
+// progress {
+//   .pinstripe();
+// }
